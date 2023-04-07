@@ -18,7 +18,7 @@ public class Main {
 
         if (sum%3==0 && num[num.length-1].equals("0")) {
             for(String nums : num) {
-                System.out.print(nums);
+                System.out.print(Integer.parseInt(nums));
             }
         } else {
             System.out.println(-1);
