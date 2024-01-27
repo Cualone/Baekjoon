@@ -12,14 +12,10 @@ public class Main {
 
         for (int i = 0; i < n; i++) {
             String num = Integer.toString(i);
-            int[] arr = new int[num.length()];
             int sum = i;
 
             for (int j = 0; j < num.length(); j++) {
-                arr[j] = Integer.parseInt(String.valueOf(num.charAt(j)));
-            }
-            for (int j = 0; j < arr.length; j++) {
-                sum += arr[j];
+                sum += num.charAt(j) - '0';
             }
             if (sum == n) {
                 result = i;
