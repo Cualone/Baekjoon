@@ -10,26 +10,13 @@ public class Main {
 
         int N = Integer.parseInt(br.readLine());
 
-        int cnt = 0;
+        int cnt = 1;
         int num = 666;
-        while (cnt < N) {
 
-
-            if (isContain(num)) {
-                cnt++;
-            }
-            if(cnt == N) break;
-
+        while (cnt != N) {
             num++;
+            if (String.valueOf(num).contains("666")) cnt++;
         }
         System.out.println(num);
-    }
-
-    public static boolean isContain(int num) {
-        String numString = Integer.toString(num);
-        for (int i = 0; i <= numString.length()-3; i++) {
-            if(numString.startsWith("666", i)) return true;
-        }
-        return false;
     }
 }
