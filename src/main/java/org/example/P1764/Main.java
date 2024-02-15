@@ -3,8 +3,7 @@ package org.example.P1764;
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
-import java.util.HashSet;
-import java.util.StringTokenizer;
+import java.util.*;
 
 public class Main {
     public static void main(String[] args) throws IOException {
@@ -15,7 +14,7 @@ public class Main {
         int cnt = 0;
 
         HashSet<String> name = new HashSet<>();
-        HashSet<String> dbj = new HashSet<>();
+        List<String> dbj = new ArrayList<>();
         StringBuilder sb = new StringBuilder();
 
         for (int i = 0; i < N; i++) {
@@ -30,7 +29,13 @@ public class Main {
             }
         }
 
-        System.out.println(cnt);
-        dbj.stream().sorted().forEach(System.out::println);
+        Collections.sort(dbj);
+
+        sb.append(cnt).append("\n");
+        for (String a : dbj) {
+            sb.append(a).append("\n");
+        }
+        System.out.println(sb);
+
     }
 }
