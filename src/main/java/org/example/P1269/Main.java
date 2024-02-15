@@ -17,6 +17,7 @@ public class Main {
 
         HashSet<Integer> A = new HashSet<>();
         HashSet<Integer> B = new HashSet<>();
+        HashSet<Integer> comp = new HashSet<>(A);
 
         StringTokenizer eleA = new StringTokenizer(br.readLine());
         for (int i = 0; i < numA; i++) {
@@ -26,7 +27,6 @@ public class Main {
         for (int i = 0; i < numB; i++) {
             B.add(Integer.parseInt(eleB.nextToken()));
         }
-        HashSet<Integer> comp = new HashSet<>(A);
 
         comp.removeAll(B);
         B.removeAll(A);
