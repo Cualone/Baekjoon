@@ -16,7 +16,6 @@ public class Main {
 
     }
 
-    // 피보나치 함수
     static int fibonacci(int N) {
         if (N == 0)	return 0;
         if (N == 1)	return 1;
