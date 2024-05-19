@@ -5,6 +5,7 @@ import java.io.IOException;
 import java.io.InputStreamReader;
 import java.util.LinkedList;
 import java.util.Queue;
+import java.util.Stack;
 import java.util.StringTokenizer;
 
 public class Main {
@@ -29,17 +30,39 @@ public class Main {
         }
         dfs(V);
         sb.append("\n");
+        dfs2(V);
+        sb.append("\n");
         bfs(V);
         System.out.println(sb);
 
     }
 
+    // dfs-재귀
     static void dfs(int node) {
         visited_dfs[node] = true;
         sb.append(node).append(" ");
         for (int next = 1; next <= N; next++) {
             if (!visited_dfs[next] && graph[node][next] != 0) {
                 dfs(next);
+            }
+        }
+    }
+
+    // dfs-stack
+    // 재귀호출과 완전히 동일한 결과를 만들 수는 없다.
+    static void dfs2(int node) {
+        boolean[] visited = new boolean[1001];
+        Stack<Integer> stack = new Stack<>();
+        visited[node] = true;
+        stack.push(node);
+        while (!stack.isEmpty()) {
+            int curr = stack.pop();
+            sb.append(curr).append(" ");
+            for (int next = N; next >= 1; next--) {
+                if (!visited[next] && graph[curr][next] != 0) {
+                    visited[next] = true;
+                    stack.push(next);
+                }
             }
         }
     }
