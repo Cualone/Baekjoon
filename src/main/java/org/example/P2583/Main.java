@@ -19,7 +19,7 @@ public class Main {
         N = Integer.parseInt(st.nextToken());
         int K = Integer.parseInt(st.nextToken());
         int count = 0;
-        board = new int[M][N];
+        board = new int[N][M];
 
         for (int i = 0; i < K; i++) {
             st = new StringTokenizer(br.readLine());
@@ -27,15 +27,15 @@ public class Main {
             int leftY = Integer.parseInt(st.nextToken());
             int rightX = Integer.parseInt(st.nextToken());
             int rightY = Integer.parseInt(st.nextToken());
-            for (int j = leftX; j < rightX; j++) {
-                for (int k = leftY; k < rightY; k++) {
+            for (int k = leftX; k < rightX; k++) {
+                for (int j = leftY; j < rightY; j++) {
                     board[k][j] = 1;
                 }
             }
         }
 
-        for (int i = 0; i < M; i++) {
-            for (int j = 0; j < N; j++) {
+        for (int i = 0; i < N; i++) {
+            for (int j = 0; j < M; j++) {
                 if (!visited[i][j] && (board[i][j] == 0)) {
                     dfs(i, j);
                     count++;
@@ -58,7 +58,7 @@ public class Main {
             int[] cur = stack.pop();
             for (int k = 0; k < 4; k++) {
                 int nx = cur[0] + cross[k][0], ny = cur[1] + cross[k][1];
-                if (nx < 0 || ny < 0 || nx >= M || ny >= N) continue;
+                if (nx < 0 || ny < 0 || nx >= N || ny >= M) continue;
                 if (visited[nx][ny]) continue;
                 if (board[nx][ny] == 1) continue;
                 stack.push(new int[]{nx, ny});
