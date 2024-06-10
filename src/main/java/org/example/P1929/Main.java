@@ -14,6 +14,7 @@ public class Main {
         int N = Integer.parseInt(st.nextToken());
         boolean[] check = new boolean[N + 1];
 
+        check[1] = true;
         for (int i = 2; i * i <= N; i++) {
             if(!check[i]) {
                 for (int j = i * i; j <= N; j += i) {
