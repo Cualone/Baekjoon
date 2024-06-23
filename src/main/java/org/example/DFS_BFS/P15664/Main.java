@@ -1,4 +1,4 @@
-package org.example.DFS_BFS.P15663;
+package org.example.DFS_BFS.P15664;
 
 import java.io.BufferedReader;
 import java.io.IOException;
@@ -9,18 +9,17 @@ import java.util.StringTokenizer;
 public class Main {
     static int N, M;
     static int[] arr, result;
-    static boolean[] visited;
     static StringBuilder sb;
     public static void main(String[] args) throws IOException {
         BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
         StringTokenizer st = new StringTokenizer(br.readLine());
+
         N = Integer.parseInt(st.nextToken());
         M = Integer.parseInt(st.nextToken());
+
         arr = new int[N];
         result = new int[M];
-        visited = new boolean[N];
         sb = new StringBuilder();
-
         st = new StringTokenizer(br.readLine());
         for (int i = 0; i < N; i++) {
             arr[i] = Integer.parseInt(st.nextToken());
@@ -28,11 +27,11 @@ public class Main {
 
         Arrays.sort(arr);
 
-        tracking(0);
+        tracking(0, 0);
         System.out.println(sb);
     }
 
-    static void tracking(int depth) {
+    static void tracking(int start, int depth) {
         if (depth == M) {
             for (int i = 0; i < M; i++) {
                 sb.append(result[i]).append(" ");
@@ -42,15 +41,13 @@ public class Main {
         }
 
         int prev = 0;
-        for (int i = 0; i < N; i++) {
-            if (!visited[i]) {
-                if(arr[i] == prev) continue;
-                visited[i] = true;
+        for (int i = start; i < N; i++) {
+            if (arr[i] != prev) {
                 result[depth] = arr[i];
-                tracking(depth + 1);
-                visited[i] = false;
+                tracking(i + 1, depth + 1);
                 prev = arr[i];
             }
         }
+
     }
 }
