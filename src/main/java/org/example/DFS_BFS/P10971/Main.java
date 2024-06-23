@@ -24,8 +24,10 @@ public class Main {
             }
         }
 
-        visited[0] = true;
-        dfs(0, 0, 0);
+        for (int i = 0; i < N; i++) {
+            visited[i] = true;
+            dfs(i, 0, 0);
+        }
         System.out.println(min);
     }
 
